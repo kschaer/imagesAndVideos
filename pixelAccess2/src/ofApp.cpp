@@ -6,15 +6,17 @@ void ofApp::setup(){
     width = ofGetWidth();
     height = ofGetHeight();
     
-    imgIterator = 15;
+    imgIterator = 30;
     
     imgSize = 1000;
     //myImage.load("type2.png");
     
     myImage.allocate(imgSize, imgSize, OF_IMAGE_COLOR);
     
-    ofSetBackgroundColor(0);
+    ofSetBackgroundColor(90,200,244);
     color.set(0);
+    ofSetBackgroundAuto(false);
+    ofHideCursor();
 }
 
 //--------------------------------------------------------------
@@ -22,7 +24,7 @@ void ofApp::update(){
     for (int i = 0; i < imgSize; i++){
         for (int j = 0; j <imgSize; j++){
             float dist =ofDist(i, j, mouseX, mouseY);
-            float mappedDist = ofMap(dist, 0, 707,0,255);
+            float mappedDist = ofMap(dist, 0, 1414,0,255);
             color.set(mappedDist-i/2,mappedDist/2+j,255-mappedDist+j/2);
             myImage.setColor(i,j,color);
         }
@@ -32,7 +34,9 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    cam.enableOrtho();
+    ofSetColor(0,0,0,20);
+    ofDrawRectangle(0,0,width*2,height*2);
+    //cam.enableOrtho();
     cam.begin();
     ofPushMatrix();
     ofRotateX(180);
