@@ -30,5 +30,6 @@ class ofApp : public ofBaseApp{
     ofImage myImage;
     
     ofColor color;
+    ofEasyCam cam;
 		
 };
